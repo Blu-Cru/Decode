@@ -36,12 +36,12 @@ import org.firstinspires.ftc.teamcode.blucru.common.util.Globals;
 @TeleOp(name = "Demo", group = "norm")
 public class Demo extends BluLinearOpMode {
 
-    public static double SHOOTER_VEL = 600;
-    public static double HOOD_ANGLE = 26;
+    public static double SHOOTER_VEL = 1000;
+    public static double HOOD_ANGLE = 40;
     public static double TURRET_POWER = 0.2;
     public static double TURRET_LIMIT_DEG = 90;
     // Set to -1 if dpad left/right turn the turret the wrong way.
-    public static double TURRET_DIRECTION = 1;
+    public static double TURRET_DIRECTION = -1;
 
     private static final int RUMBLE_MS = 200;
     private static final int READY_RUMBLE_MS = 500;
@@ -184,9 +184,9 @@ public class Demo extends BluLinearOpMode {
                 new WaitUntilCommand(turret::atTarget),
                 new WaitCommand(30),
                 new ElevatorUpCommand(),
-                new WaitCommand(330),
+                new WaitCommand(700),
                 new ElevatorMiddleCommand(),
-                new WaitCommand(130),
+                new WaitCommand(200),
                 new AllTransferMiddleCommand(),
                 new InstantCommand(() -> sequenceDone = true)
         ).schedule();
