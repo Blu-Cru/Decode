@@ -143,7 +143,10 @@ public class SixWheelDrive extends SixWheelDriveBase implements Subsystem {
             }
         } else {
             dtState = State.TELE_DRIVE;
-            drive(x * multiplier, r * multiplier);
+            double[] powers = SixWheelKinematics.getPowers(x * multiplier, r * multiplier);
+            double left = powers[0] * drivePower;
+            double right = powers[1] * drivePower;
+            drive((left + right) / 2, (left - right) / 2);
         }
 
     }

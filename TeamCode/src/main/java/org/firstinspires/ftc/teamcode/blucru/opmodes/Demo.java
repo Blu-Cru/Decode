@@ -42,6 +42,8 @@ public class Demo extends BluLinearOpMode {
     public static double TURRET_LIMIT_DEG = 90;
     // Set to -1 if dpad left/right turn the turret the wrong way.
     public static double TURRET_DIRECTION = -1;
+    // Fraction of full drive power.
+    public static double DRIVE_POWER = 0.5;
 
     private static final int RUMBLE_MS = 200;
     private static final int READY_RUMBLE_MS = 500;
@@ -132,6 +134,7 @@ public class Demo extends BluLinearOpMode {
     public void periodic() {
         sm.update();
 
+        sixWheel.setDrivePower(DRIVE_POWER);
         sixWheel.teleDrive(gamepad1, 0.0001);
 
         if (sm.getState() == State.AIMING) {
